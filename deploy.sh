@@ -22,6 +22,8 @@ killTomcat(){
 
 cd $PROJ_PATH/
 mvn clean install
+cd $PROJ_PATH/hjmall-mini-program-service
+mvn clean package
 
 # 关闭tomcat
 killTomcat
