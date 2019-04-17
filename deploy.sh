@@ -34,7 +34,7 @@ rm -f $TOMCAT_APP_PATH/webapps/ROOT.war
 rm -f $TOMCAT_APP_PATH/webapps/hjmall-mini-program-service.war
 
 # 复制新的工程
-cp $PROJ_PATH/target/hjmall-mini-program-service.war $TOMCAT_APP_PATH/webapps/
+cp $PROJ_PATH/hjmall-mini-program-service/target/hjmall-mini-program-service.war $TOMCAT_APP_PATH/webapps/
 
 cd $TOMCAT_APP_PATH/webapps/
 mv hjmall-mini-program-service.war ROOT.war
