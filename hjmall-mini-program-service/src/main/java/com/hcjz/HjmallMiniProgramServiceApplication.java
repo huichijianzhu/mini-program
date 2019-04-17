@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication
 @MapperScan(basePackages = "com.hcjz.mapper")
 //@ComponentScan(basePackages = "com.hcjz.service")
-@EnableDubbo
+//@EnableDubbo
 //@EnableWebMvc
 public class HjmallMiniProgramServiceApplication extends SpringBootServletInitializer {
 
