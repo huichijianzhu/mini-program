@@ -19,7 +19,7 @@ killTomcat(){
     kill -9 $pid
   fi
 }
-cd $PROJ_PATH/hjmall-mini-program
+cd $PROJ_PATH/hjmall-mini-program-service
 mvn clean install
 # 关闭tomcat
 killTomcat
@@ -27,13 +27,13 @@ killTomcat
 #删除原有工程
 rm -rf $TOMCAT_APP_PATH/webapps/ROOT
 rm -f $TOMCAT_APP_PATH/webapps/ROOT.war
-rm -f $TOMCAT_APP_PATH/webapps/hjmall-mini-program.war
+rm -f $TOMCAT_APP_PATH/webapps/hjmall-mini-program-service.war
 
 # 复制新的工程
 cp $PROJ_PATH/target/hjmall-mini-program-service.war $TOMCAT_APP_PATH/webapps/
 
 cd $TOMCAT_APP_PATH/webapps/
-mv hjmall-mini-program.war ROOT.war
+mv hjmall-mini-program-service.war ROOT.war
 
 # 启动Tomcat
 cd $TOMCAT_APP_PATH/
