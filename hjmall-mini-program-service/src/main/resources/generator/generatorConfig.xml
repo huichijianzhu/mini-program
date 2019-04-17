@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="testTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/hjmall" userId="root"
+			password="root">
+		</jdbcConnection>
+		<!-- <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:yycg" 
+			userId="yycg"
+			password="yycg">
+		</jdbcConnection> -->
+
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- targetProject:生成PO类的位置 -->
+		<javaModelGenerator targetPackage="com.hcjz.pojo"
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="com.hcjz.mapper"
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!-- targetPackage：mapper接口生成的位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.hcjz.mapper"
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<!-- 指定数据库表 -->
+		<table tableName="hjmall_action_log"></table>
+		<table tableName="hjmall_address"></table>
+		<table tableName="hjmall_admin"></table>
+		<table tableName="hjmall_admin_permission"></table>
+		<table tableName="hjmall_admin_register"></table>
+		<table tableName="hjmall_article"></table>
+		<table tableName="hjmall_attr"></table>
+		<table tableName="hjmall_attr_group"></table>
+		<table tableName="hjmall_auth_role"></table>
+		<table tableName="hjmall_auth_role_permission"></table>
+		<table tableName="hjmall_auth_role_user"></table>
+		<table tableName="hjmall_banner"></table>
+		<table tableName="hjmall_bargain_goods"></table>
+		<table tableName="hjmall_bargain_order"></table>
+		<table tableName="hjmall_bargain_setting"></table>
+		<table tableName="hjmall_bargain_user_order"></table>
+		<table tableName="hjmall_card"></table>
+		<table tableName="hjmall_cart"></table>
+		<table tableName="hjmall_cash"></table>
+		<table tableName="hjmall_cat"></table>
+		<table tableName="hjmall_color"></table>
+		<table tableName="hjmall_coupon"></table>
+		<table tableName="hjmall_coupon_auto_send"></table>
+		<table tableName="hjmall_delivery"></table>
+		<table tableName="hjmall_district"></table>
+		<table tableName="hjmall_express"></table>
+		<table tableName="hjmall_favorite"></table>
+		<table tableName="hjmall_file_group"></table>
+		<table tableName="hjmall_form"></table>
+		<table tableName="hjmall_form_id"></table>
+		<table tableName="hjmall_free_delivery_rules"></table>
+		<table tableName="hjmall_fxhb_hongbao"></table>
+		<table tableName="hjmall_fxhb_setting"></table>
+		<table tableName="hjmall_goods"></table>
+		<table tableName="hjmall_goods_card"></table>
+		<table tableName="hjmall_goods_pic"></table>
+		<table tableName="hjmall_goods_share"></table>
+		<table tableName="hjmall_home_block"></table>
+		<table tableName="hjmall_home_nav"></table>
+		<table tableName="hjmall_in_order_comment"></table>
+		<table tableName="hjmall_integral_cat"></table>
+		<table tableName="hjmall_integral_coupon_order"></table>
+		<table tableName="hjmall_integral_goods"></table>
+		<table tableName="hjmall_integral_log"></table>
+		<table tableName="hjmall_integral_order"></table>
+		<table tableName="hjmall_integral_order_detail"></table>
+		<table tableName="hjmall_integral_setting"></table>
+		<table tableName="hjmall_level"></table>
+		<table tableName="hjmall_level_order"></table>
+		<table tableName="hjmall_mail_setting"></table>
+		<table tableName="hjmall_mch"></table>
+		<table tableName="hjmall_mch_account_log"></table>
+		<table tableName="hjmall_mch_cash"></table>
+		<table tableName="hjmall_mch_cat"></table>
+		<table tableName="hjmall_mch_common_cat"></table>
+		<table tableName="hjmall_mch_goods_cat"></table>
+		<table tableName="hjmall_mch_plugin"></table>
+		<table tableName="hjmall_mch_postage_rules"></table>
+		<table tableName="hjmall_mch_setting"></table>
+		<table tableName="hjmall_mch_visit_log"></table>
+		<table tableName="hjmall_miaosha"></table>
+		<table tableName="hjmall_miaosha_goods"></table>
+		<table tableName="hjmall_ms_goods"></table>
+		<table tableName="hjmall_ms_goods_pic"></table>
+		<table tableName="hjmall_ms_order"></table>
+		<table tableName="hjmall_ms_order_comment"></table>
+		<table tableName="hjmall_ms_order_refund"></table>
+		<table tableName="hjmall_ms_order_refund"></table>
+		<table tableName="hjmall_ms_setting"></table>
+		<table tableName="hjmall_option"></table>
+		<table tableName="hjmall_order"></table>
+		<table tableName="hjmall_order_comment"></table>
+		<table tableName="hjmall_order_detail"></table>
+		<table tableName="hjmall_order_express"></table>
+		<table tableName="hjmall_order_form"></table>
+		<table tableName="hjmall_order_message"></table>
+		<table tableName="hjmall_order_refund"></table>
+		<table tableName="hjmall_order_share"></table>
+		<table tableName="hjmall_order_union"></table>
+		<table tableName="hjmall_plugin"></table>
+		<table tableName="hjmall_pond"></table>
+		<table tableName="hjmall_pond_log"></table>
+		<table tableName="hjmall_pond_setting"></table>
+		<table tableName="hjmall_postage_rules"></table>
+		<table tableName="hjmall_printer"></table>
+		<table tableName="hjmall_printer_setting"></table>
+		<table tableName="hjmall_pt_cat"></table>
+		<table tableName="hjmall_pt_goods"></table>
+		<table tableName="hjmall_pt_goods_detail"></table>
+		<table tableName="hjmall_pt_goods_pic"></table>
+		<table tableName="hjmall_pt_order"></table>
+		<table tableName="hjmall_pt_order_comment"></table>
+		<table tableName="hjmall_pt_order_detail"></table>
+		<table tableName="hjmall_pt_order_refund"></table>
+		<table tableName="hjmall_pt_robot"></table>
+		<table tableName="hjmall_pt_setting"></table>
+		<table tableName="hjmall_qrcode"></table>
+		<table tableName="hjmall_re_order"></table>
+		<table tableName="hjmall_recharge"></table>
+		<table tableName="hjmall_refund_address"></table>
+		<table tableName="hjmall_register"></table>
+		<table tableName="hjmall_scratch"></table>
+		<table tableName="hjmall_scratch_log"></table>
+		<table tableName="hjmall_scratch_setting"></table>
+		<table tableName="hjmall_sender"></table>
+		<table tableName="hjmall_session"></table>
+		<table tableName="hjmall_setting"></table>
+		<table tableName="hjmall_share"></table>
+		<table tableName="hjmall_shop"></table>
+		<table tableName="hjmall_shop_pic"></table>
+		<table tableName="hjmall_sms_record"></table>
+		<table tableName="hjmall_sms_setting"></table>
+		<table tableName="hjmall_store"></table>
+		<table tableName="hjmall_template_msg"></table>
+		<table tableName="hjmall_territorial_limitation"></table>
+		<table tableName="hjmall_topic"></table>
+		<table tableName="hjmall_topic_favorite"></table>
+		<table tableName="hjmall_topic_type"></table>
+		<table tableName="hjmall_upload_config"></table>
+		<table tableName="hjmall_upload_file"></table>
+		<table tableName="hjmall_user"></table>
+		<table tableName="hjmall_user_account_log"></table>
+		<table tableName="hjmall_user_auth_login"></table>
+		<table tableName="hjmall_user_card"></table>
+		<table tableName="hjmall_user_coupon"></table>
+		<table tableName="hjmall_user_form_id"></table>
+		<table tableName="hjmall_user_log"></table>
+		<table tableName="hjmall_user_share_money"></table>
+		<table tableName="hjmall_video"></table>
+		<table tableName="hjmall_we7_user_auth"></table>
+		<table tableName="hjmall_wechat_app"></table>
+		<table tableName="hjmall_wechat_platform"></table>
+		<table tableName="hjmall_wechat_template_message"></table>
+		<table tableName="hjmall_wx_title"></table>
+		<table tableName="hjmall_yy_cat"></table>
+		<table tableName="hjmall_yy_form"></table>
+		<table tableName="hjmall_yy_form_id"></table>
+		<table tableName="hjmall_yy_goods"></table>
+		<table tableName="hjmall_yy_goods_pic"></table>
+		<table tableName="hjmall_yy_order"></table>
+		<table tableName="hjmall_yy_order_comment"></table>
+		<table tableName="hjmall_yy_order_form"></table>
+		<table tableName="hjmall_yy_setting"></table>
+	</context>
+</generatorConfiguration>

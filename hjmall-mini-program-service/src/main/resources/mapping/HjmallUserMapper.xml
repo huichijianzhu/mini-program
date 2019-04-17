@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hcjz.mapper.HjmallUserMapper" >
+  <resultMap id="BaseResultMap" type="com.hcjz.pojo.HjmallUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="SMALLINT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="auth_key" property="authKey" jdbcType="VARCHAR" />
+    <result column="access_token" property="accessToken" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="SMALLINT" />
+    <result column="wechat_open_id" property="wechatOpenId" jdbcType="VARCHAR" />
+    <result column="wechat_union_id" property="wechatUnionId" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="is_distributor" property="isDistributor" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="INTEGER" />
+    <result column="total_price" property="totalPrice" jdbcType="DECIMAL" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="is_clerk" property="isClerk" jdbcType="INTEGER" />
+    <result column="we7_uid" property="we7Uid" jdbcType="INTEGER" />
+    <result column="shop_id" property="shopId" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="integral" property="integral" jdbcType="INTEGER" />
+    <result column="total_integral" property="totalIntegral" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="contact_way" property="contactWay" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="binding" property="binding" jdbcType="CHAR" />
+    <result column="wechat_platform_open_id" property="wechatPlatformOpenId" jdbcType="VARCHAR" />
+    <result column="platform" property="platform" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hcjz.pojo.HjmallUser" extends="BaseResultMap" >
+    <result column="avatar_url" property="avatarUrl" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, type, username, password, auth_key, access_token, addtime, is_delete, wechat_open_id, 
+    wechat_union_id, nickname, store_id, is_distributor, parent_id, time, total_price, 
+    price, is_clerk, we7_uid, shop_id, level, integral, total_integral, money, contact_way, 
+    comments, binding, wechat_platform_open_id, platform
+  </sql>
+  <sql id="Blob_Column_List" >
+    avatar_url
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.hcjz.pojo.HjmallUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from hjmall_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hcjz.pojo.HjmallUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from hjmall_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from hjmall_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hjmall_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hcjz.pojo.HjmallUserExample" >
+    delete from hjmall_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hcjz.pojo.HjmallUser" >
+    insert into hjmall_user (id, type, username, 
+      password, auth_key, access_token, 
+      addtime, is_delete, wechat_open_id, 
+      wechat_union_id, nickname, store_id, 
+      is_distributor, parent_id, time, 
+      total_price, price, is_clerk, 
+      we7_uid, shop_id, level, 
+      integral, total_integral, money, 
+      contact_way, comments, binding, 
+      wechat_platform_open_id, platform, avatar_url
+      )
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=SMALLINT}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{authKey,jdbcType=VARCHAR}, #{accessToken,jdbcType=VARCHAR}, 
+      #{addtime,jdbcType=INTEGER}, #{isDelete,jdbcType=SMALLINT}, #{wechatOpenId,jdbcType=VARCHAR}, 
+      #{wechatUnionId,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{storeId,jdbcType=INTEGER}, 
+      #{isDistributor,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{time,jdbcType=INTEGER}, 
+      #{totalPrice,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, #{isClerk,jdbcType=INTEGER}, 
+      #{we7Uid,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, 
+      #{integral,jdbcType=INTEGER}, #{totalIntegral,jdbcType=INTEGER}, #{money,jdbcType=DECIMAL}, 
+      #{contactWay,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}, #{binding,jdbcType=CHAR}, 
+      #{wechatPlatformOpenId,jdbcType=VARCHAR}, #{platform,jdbcType=TINYINT}, #{avatarUrl,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hcjz.pojo.HjmallUser" >
+    insert into hjmall_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="authKey != null" >
+        auth_key,
+      </if>
+      <if test="accessToken != null" >
+        access_token,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="wechatOpenId != null" >
+        wechat_open_id,
+      </if>
+      <if test="wechatUnionId != null" >
+        wechat_union_id,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="isDistributor != null" >
+        is_distributor,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="totalPrice != null" >
+        total_price,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="isClerk != null" >
+        is_clerk,
+      </if>
+      <if test="we7Uid != null" >
+        we7_uid,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="integral != null" >
+        integral,
+      </if>
+      <if test="totalIntegral != null" >
+        total_integral,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="contactWay != null" >
+        contact_way,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="binding != null" >
+        binding,
+      </if>
+      <if test="wechatPlatformOpenId != null" >
+        wechat_platform_open_id,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+      <if test="avatarUrl != null" >
+        avatar_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="authKey != null" >
+        #{authKey,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null" >
+        #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=SMALLINT},
+      </if>
+      <if test="wechatOpenId != null" >
+        #{wechatOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatUnionId != null" >
+        #{wechatUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="isDistributor != null" >
+        #{isDistributor,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="isClerk != null" >
+        #{isClerk,jdbcType=INTEGER},
+      </if>
+      <if test="we7Uid != null" >
+        #{we7Uid,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null" >
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="totalIntegral != null" >
+        #{totalIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="contactWay != null" >
+        #{contactWay,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="binding != null" >
+        #{binding,jdbcType=CHAR},
+      </if>
+      <if test="wechatPlatformOpenId != null" >
+        #{wechatPlatformOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=TINYINT},
+      </if>
+      <if test="avatarUrl != null" >
+        #{avatarUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hcjz.pojo.HjmallUserExample" resultType="java.lang.Integer" >
+    select count(*) from hjmall_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update hjmall_user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=SMALLINT},
+      </if>
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authKey != null" >
+        auth_key = #{record.authKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accessToken != null" >
+        access_token = #{record.accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addtime != null" >
+        addtime = #{record.addtime,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=SMALLINT},
+      </if>
+      <if test="record.wechatOpenId != null" >
+        wechat_open_id = #{record.wechatOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechatUnionId != null" >
+        wechat_union_id = #{record.wechatUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickname != null" >
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeId != null" >
+        store_id = #{record.storeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDistributor != null" >
+        is_distributor = #{record.isDistributor,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentId != null" >
+        parent_id = #{record.parentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalPrice != null" >
+        total_price = #{record.totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isClerk != null" >
+        is_clerk = #{record.isClerk,jdbcType=INTEGER},
+      </if>
+      <if test="record.we7Uid != null" >
+        we7_uid = #{record.we7Uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopId != null" >
+        shop_id = #{record.shopId,jdbcType=INTEGER},
+      </if>
+      <if test="record.level != null" >
+        level = #{record.level,jdbcType=INTEGER},
+      </if>
+      <if test="record.integral != null" >
+        integral = #{record.integral,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalIntegral != null" >
+        total_integral = #{record.totalIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money,jdbcType=DECIMAL},
+      </if>
+      <if test="record.contactWay != null" >
+        contact_way = #{record.contactWay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comments != null" >
+        comments = #{record.comments,jdbcType=VARCHAR},
+      </if>
+      <if test="record.binding != null" >
+        binding = #{record.binding,jdbcType=CHAR},
+      </if>
+      <if test="record.wechatPlatformOpenId != null" >
+        wechat_platform_open_id = #{record.wechatPlatformOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platform != null" >
+        platform = #{record.platform,jdbcType=TINYINT},
+      </if>
+      <if test="record.avatarUrl != null" >
+        avatar_url = #{record.avatarUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update hjmall_user
+    set id = #{record.id,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=SMALLINT},
+      username = #{record.username,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      auth_key = #{record.authKey,jdbcType=VARCHAR},
+      access_token = #{record.accessToken,jdbcType=VARCHAR},
+      addtime = #{record.addtime,jdbcType=INTEGER},
+      is_delete = #{record.isDelete,jdbcType=SMALLINT},
+      wechat_open_id = #{record.wechatOpenId,jdbcType=VARCHAR},
+      wechat_union_id = #{record.wechatUnionId,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      store_id = #{record.storeId,jdbcType=INTEGER},
+      is_distributor = #{record.isDistributor,jdbcType=INTEGER},
+      parent_id = #{record.parentId,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=INTEGER},
+      total_price = #{record.totalPrice,jdbcType=DECIMAL},
+      price = #{record.price,jdbcType=DECIMAL},
+      is_clerk = #{record.isClerk,jdbcType=INTEGER},
+      we7_uid = #{record.we7Uid,jdbcType=INTEGER},
+      shop_id = #{record.shopId,jdbcType=INTEGER},
+      level = #{record.level,jdbcType=INTEGER},
+      integral = #{record.integral,jdbcType=INTEGER},
+      total_integral = #{record.totalIntegral,jdbcType=INTEGER},
+      money = #{record.money,jdbcType=DECIMAL},
+      contact_way = #{record.contactWay,jdbcType=VARCHAR},
+      comments = #{record.comments,jdbcType=VARCHAR},
+      binding = #{record.binding,jdbcType=CHAR},
+      wechat_platform_open_id = #{record.wechatPlatformOpenId,jdbcType=VARCHAR},
+      platform = #{record.platform,jdbcType=TINYINT},
+      avatar_url = #{record.avatarUrl,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update hjmall_user
+    set id = #{record.id,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=SMALLINT},
+      username = #{record.username,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      auth_key = #{record.authKey,jdbcType=VARCHAR},
+      access_token = #{record.accessToken,jdbcType=VARCHAR},
+      addtime = #{record.addtime,jdbcType=INTEGER},
+      is_delete = #{record.isDelete,jdbcType=SMALLINT},
+      wechat_open_id = #{record.wechatOpenId,jdbcType=VARCHAR},
+      wechat_union_id = #{record.wechatUnionId,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      store_id = #{record.storeId,jdbcType=INTEGER},
+      is_distributor = #{record.isDistributor,jdbcType=INTEGER},
+      parent_id = #{record.parentId,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=INTEGER},
+      total_price = #{record.totalPrice,jdbcType=DECIMAL},
+      price = #{record.price,jdbcType=DECIMAL},
+      is_clerk = #{record.isClerk,jdbcType=INTEGER},
+      we7_uid = #{record.we7Uid,jdbcType=INTEGER},
+      shop_id = #{record.shopId,jdbcType=INTEGER},
+      level = #{record.level,jdbcType=INTEGER},
+      integral = #{record.integral,jdbcType=INTEGER},
+      total_integral = #{record.totalIntegral,jdbcType=INTEGER},
+      money = #{record.money,jdbcType=DECIMAL},
+      contact_way = #{record.contactWay,jdbcType=VARCHAR},
+      comments = #{record.comments,jdbcType=VARCHAR},
+      binding = #{record.binding,jdbcType=CHAR},
+      wechat_platform_open_id = #{record.wechatPlatformOpenId,jdbcType=VARCHAR},
+      platform = #{record.platform,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hcjz.pojo.HjmallUser" >
+    update hjmall_user
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="authKey != null" >
+        auth_key = #{authKey,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null" >
+        access_token = #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=SMALLINT},
+      </if>
+      <if test="wechatOpenId != null" >
+        wechat_open_id = #{wechatOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatUnionId != null" >
+        wechat_union_id = #{wechatUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="isDistributor != null" >
+        is_distributor = #{isDistributor,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrice != null" >
+        total_price = #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="isClerk != null" >
+        is_clerk = #{isClerk,jdbcType=INTEGER},
+      </if>
+      <if test="we7Uid != null" >
+        we7_uid = #{we7Uid,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null" >
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="totalIntegral != null" >
+        total_integral = #{totalIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="contactWay != null" >
+        contact_way = #{contactWay,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="binding != null" >
+        binding = #{binding,jdbcType=CHAR},
+      </if>
+      <if test="wechatPlatformOpenId != null" >
+        wechat_platform_open_id = #{wechatPlatformOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=TINYINT},
+      </if>
+      <if test="avatarUrl != null" >
+        avatar_url = #{avatarUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hcjz.pojo.HjmallUser" >
+    update hjmall_user
+    set type = #{type,jdbcType=SMALLINT},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      auth_key = #{authKey,jdbcType=VARCHAR},
+      access_token = #{accessToken,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=SMALLINT},
+      wechat_open_id = #{wechatOpenId,jdbcType=VARCHAR},
+      wechat_union_id = #{wechatUnionId,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      store_id = #{storeId,jdbcType=INTEGER},
+      is_distributor = #{isDistributor,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      time = #{time,jdbcType=INTEGER},
+      total_price = #{totalPrice,jdbcType=DECIMAL},
+      price = #{price,jdbcType=DECIMAL},
+      is_clerk = #{isClerk,jdbcType=INTEGER},
+      we7_uid = #{we7Uid,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      integral = #{integral,jdbcType=INTEGER},
+      total_integral = #{totalIntegral,jdbcType=INTEGER},
+      money = #{money,jdbcType=DECIMAL},
+      contact_way = #{contactWay,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      binding = #{binding,jdbcType=CHAR},
+      wechat_platform_open_id = #{wechatPlatformOpenId,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=TINYINT},
+      avatar_url = #{avatarUrl,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hcjz.pojo.HjmallUser" >
+    update hjmall_user
+    set type = #{type,jdbcType=SMALLINT},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      auth_key = #{authKey,jdbcType=VARCHAR},
+      access_token = #{accessToken,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=SMALLINT},
+      wechat_open_id = #{wechatOpenId,jdbcType=VARCHAR},
+      wechat_union_id = #{wechatUnionId,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      store_id = #{storeId,jdbcType=INTEGER},
+      is_distributor = #{isDistributor,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      time = #{time,jdbcType=INTEGER},
+      total_price = #{totalPrice,jdbcType=DECIMAL},
+      price = #{price,jdbcType=DECIMAL},
+      is_clerk = #{isClerk,jdbcType=INTEGER},
+      we7_uid = #{we7Uid,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      integral = #{integral,jdbcType=INTEGER},
+      total_integral = #{totalIntegral,jdbcType=INTEGER},
+      money = #{money,jdbcType=DECIMAL},
+      contact_way = #{contactWay,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      binding = #{binding,jdbcType=CHAR},
+      wechat_platform_open_id = #{wechatPlatformOpenId,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

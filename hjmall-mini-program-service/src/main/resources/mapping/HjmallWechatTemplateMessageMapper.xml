@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hcjz.mapper.HjmallWechatTemplateMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.hcjz.pojo.HjmallWechatTemplateMessage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="pay_tpl" property="payTpl" jdbcType="VARCHAR" />
+    <result column="send_tpl" property="sendTpl" jdbcType="VARCHAR" />
+    <result column="refund_tpl" property="refundTpl" jdbcType="VARCHAR" />
+    <result column="not_pay_tpl" property="notPayTpl" jdbcType="VARCHAR" />
+    <result column="revoke_tpl" property="revokeTpl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, store_id, pay_tpl, send_tpl, refund_tpl, not_pay_tpl, revoke_tpl
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hcjz.pojo.HjmallWechatTemplateMessageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from hjmall_wechat_template_message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hjmall_wechat_template_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hjmall_wechat_template_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hcjz.pojo.HjmallWechatTemplateMessageExample" >
+    delete from hjmall_wechat_template_message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hcjz.pojo.HjmallWechatTemplateMessage" >
+    insert into hjmall_wechat_template_message (id, store_id, pay_tpl, 
+      send_tpl, refund_tpl, not_pay_tpl, 
+      revoke_tpl)
+    values (#{id,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, #{payTpl,jdbcType=VARCHAR}, 
+      #{sendTpl,jdbcType=VARCHAR}, #{refundTpl,jdbcType=VARCHAR}, #{notPayTpl,jdbcType=VARCHAR}, 
+      #{revokeTpl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hcjz.pojo.HjmallWechatTemplateMessage" >
+    insert into hjmall_wechat_template_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="payTpl != null" >
+        pay_tpl,
+      </if>
+      <if test="sendTpl != null" >
+        send_tpl,
+      </if>
+      <if test="refundTpl != null" >
+        refund_tpl,
+      </if>
+      <if test="notPayTpl != null" >
+        not_pay_tpl,
+      </if>
+      <if test="revokeTpl != null" >
+        revoke_tpl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="payTpl != null" >
+        #{payTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTpl != null" >
+        #{sendTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="refundTpl != null" >
+        #{refundTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="notPayTpl != null" >
+        #{notPayTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="revokeTpl != null" >
+        #{revokeTpl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hcjz.pojo.HjmallWechatTemplateMessageExample" resultType="java.lang.Integer" >
+    select count(*) from hjmall_wechat_template_message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update hjmall_wechat_template_message
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.storeId != null" >
+        store_id = #{record.storeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.payTpl != null" >
+        pay_tpl = #{record.payTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendTpl != null" >
+        send_tpl = #{record.sendTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refundTpl != null" >
+        refund_tpl = #{record.refundTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.notPayTpl != null" >
+        not_pay_tpl = #{record.notPayTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.revokeTpl != null" >
+        revoke_tpl = #{record.revokeTpl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update hjmall_wechat_template_message
+    set id = #{record.id,jdbcType=INTEGER},
+      store_id = #{record.storeId,jdbcType=INTEGER},
+      pay_tpl = #{record.payTpl,jdbcType=VARCHAR},
+      send_tpl = #{record.sendTpl,jdbcType=VARCHAR},
+      refund_tpl = #{record.refundTpl,jdbcType=VARCHAR},
+      not_pay_tpl = #{record.notPayTpl,jdbcType=VARCHAR},
+      revoke_tpl = #{record.revokeTpl,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hcjz.pojo.HjmallWechatTemplateMessage" >
+    update hjmall_wechat_template_message
+    <set >
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="payTpl != null" >
+        pay_tpl = #{payTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTpl != null" >
+        send_tpl = #{sendTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="refundTpl != null" >
+        refund_tpl = #{refundTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="notPayTpl != null" >
+        not_pay_tpl = #{notPayTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="revokeTpl != null" >
+        revoke_tpl = #{revokeTpl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hcjz.pojo.HjmallWechatTemplateMessage" >
+    update hjmall_wechat_template_message
+    set store_id = #{storeId,jdbcType=INTEGER},
+      pay_tpl = #{payTpl,jdbcType=VARCHAR},
+      send_tpl = #{sendTpl,jdbcType=VARCHAR},
+      refund_tpl = #{refundTpl,jdbcType=VARCHAR},
+      not_pay_tpl = #{notPayTpl,jdbcType=VARCHAR},
+      revoke_tpl = #{revokeTpl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
