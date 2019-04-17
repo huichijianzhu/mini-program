@@ -19,14 +19,10 @@ killTomcat(){
     kill -9 $pid
   fi
 }
-cd $PROJ_PATH/hjmall-mini-program-service
+
+cd $PROJ_PATH/hjmall-mini-program
 mvn clean install
-cd $PROJ_PATH/hjmall-mini-program-pojo
-mvn clean install
-cd $PROJ_PATH/hjmall-mini-program-dao
-mvn clean install
-cd $PROJ_PATH/hjmall-mini-program-interface
-mvn clean install
+
 # 关闭tomcat
 killTomcat
 
