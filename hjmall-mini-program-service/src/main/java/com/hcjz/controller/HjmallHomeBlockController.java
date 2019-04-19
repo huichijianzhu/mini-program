@@ -26,7 +26,7 @@ public class HjmallHomeBlockController implements ErrorController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public CommonReturnType list(@RequestParam(value = "pageNum",required = false,defaultValue = "0") Integer pageNum,
                                  @RequestParam(value = "pageSize", required = false, defaultValue = "") Integer pageSize) throws BusinessException {
-        System.out.println(5/0);
+//        System.out.println(5/0);
         return hjmallHomeBlockService.selectList(pageNum, pageSize);
     }
 

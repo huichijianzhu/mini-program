@@ -12,5 +12,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="hjmall-common" />
+    <orderEntry type="module" module-name="hjmall-mini-program-pojo" />
   </component>
 </module>
