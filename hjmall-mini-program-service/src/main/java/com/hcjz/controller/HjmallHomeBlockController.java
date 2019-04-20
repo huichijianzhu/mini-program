@@ -35,7 +35,7 @@ public class HjmallHomeBlockController implements ErrorController {
         return hjmallHomeBlockService.deleteFakeById(id);
     }
 
-    @RequestMapping(value = "/insert", method = RequestMethod.PUT)
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public CommonReturnType insertByPojo(HjmallHomeBlock hjmallHomeBlock) {
         return hjmallHomeBlockService.insertByHomeBlock(hjmallHomeBlock);
     }
@@ -45,7 +45,7 @@ public class HjmallHomeBlockController implements ErrorController {
         return hjmallHomeBlockService.updateByHomeBlock(hjmallHomeBlock);
     }
 
-    @RequestMapping("/home")
+    @RequestMapping(value = "/home")
     public String home() throws Exception {
         System.out.println(10/0);
 //        throw new Exception("Sam 错误");
@@ -53,7 +53,7 @@ public class HjmallHomeBlockController implements ErrorController {
 
     }
 
-    @RequestMapping("/error")
+    @RequestMapping(value = "/error")
     public Map<String,Object> error() {
         Map<String,Object> result=new HashMap<String,Object>();
         result.put("message", "not found!");
